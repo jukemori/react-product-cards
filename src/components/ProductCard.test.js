@@ -18,6 +18,7 @@ describe("ProductCard", () => {
   it("renders product details correctly", () => {
     render(<ProductCard product={product} handleVote={handleVote} />);
 
+    // Get product elements
     const productImage = screen.getByAltText("Product");
     const voteButton = screen.getByTestId("vote-button");
     const voteAmount = screen.getByText("10");
@@ -25,6 +26,7 @@ describe("ProductCard", () => {
     const productDescription = screen.getByText("This is a sample product");
     const submitterAvatar = screen.getByAltText("Submitter Avatar");
 
+    // Assert product details
     expect(productImage).toBeInTheDocument();
     expect(productImage.src).toBe("https://example.com/image.jpg");
     expect(voteButton).toBeInTheDocument();
@@ -38,9 +40,11 @@ describe("ProductCard", () => {
   it("calls handleVote when vote button is clicked", () => {
     render(<ProductCard product={product} handleVote={handleVote} />);
 
+    // Get vote button and simulate click
     const voteButton = screen.getByTestId("vote-button");
     fireEvent.click(voteButton);
 
+    // Assert handleVote is called with the correct arguments
     expect(handleVote).toHaveBeenCalledTimes(1);
     expect(handleVote).toHaveBeenCalledWith(1);
   });

@@ -4,6 +4,7 @@ import App from "./App";
 
 describe("App", () => {
   const seedProducts = [
+    // Seed data for testing
     {
       id: 1,
       productImageUrl: "https://example.com/image1.jpg",
@@ -41,6 +42,7 @@ describe("App", () => {
   it("renders product cards correctly", () => {
     render(<App />);
 
+    // Get elements from the rendered App component
     const productImages = screen.getAllByAltText("Product");
     const voteButtons = screen.getAllByTestId("vote-button");
     const voteAmounts = screen.getAllByTestId("vote-amount");
@@ -48,6 +50,7 @@ describe("App", () => {
     const productDescriptions = screen.getAllByTestId("product-description");
     const submitterAvatars = screen.getAllByAltText("Submitter Avatar");
 
+    // Perform assertions to validate the rendered elements
     expect(productImages.length).toBe(2);
     expect(productImages[0].src).toBe("https://example.com/image1.jpg");
     expect(productImages[1].src).toBe("https://example.com/image2.jpg");
@@ -73,18 +76,21 @@ describe("App", () => {
   it("increments votes when vote button is clicked", () => {
     render(<App />);
 
+    // Get vote buttons and vote amounts
     const voteButtons = screen.getAllByTestId("vote-button");
     const voteAmounts = screen.getAllByTestId("vote-amount");
 
+    // Simulate click events on vote buttons
     fireEvent.click(voteButtons[0]);
     fireEvent.click(voteButtons[1]);
 
+    // Perform assertions to check if vote amounts are updated
     expect(voteAmounts[0].textContent.trim()).toBe("11");
     expect(voteAmounts[1].textContent.trim()).toBe("6");
   });
 
   it("renders 'No products found' message when there are no products", () => {
-    // Clear products
+    // Clear products by mocking the Seed module to return an empty array
     jest.spyOn(window, "Seed", "get").mockImplementation(() => ({
       get products() {
         return [];
@@ -93,8 +99,10 @@ describe("App", () => {
 
     render(<App />);
 
+    // Get the "No products found" message
     const noProductsMessage = screen.getByText("No products found");
 
+    // Perform assertion to check if the message is rendered
     expect(noProductsMessage).toBeInTheDocument();
   });
 });
