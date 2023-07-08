@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./seed";
+import ProductCard from "./components/ProductCard";
+import "./App.css";
 
 function App() {
+  function sortProductsByVotes(products) {
+    return [...products].sort((a, b) => b.votes - a.votes);
+  }
+  const [products, setProducts] = useState(() => {
+    const sortedProducts = sortProductsByVotes(window.Seed.products);
+    return sortedProducts.length > 0 ? sortedProducts : [];
+  });
+
+  const handleVote = (productId) => {
+    const updatedProducts = products.map((product) => {
+      if (product.id === productId) {
+        return { ...product, votes: product.votes + 1 };
+      }
+      return product;
+    });
+
+    const sortedProducts = sortProductsByVotes(updatedProducts);
+
+    setProducts(sortedProducts);
+  };
+
+  if (products.length === 0) {
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>Popular Products</h1>
+        </div>
+        <div className="cards">
+          <p>No products found</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="header">
+        <h1>Popular Products</h1>
+      </div>
+      <div className="cards">
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            handleVote={handleVote}
+          />
+        ))}
+      </div>
     </div>
   );
 }
