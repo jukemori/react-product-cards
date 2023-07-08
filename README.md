@@ -1,70 +1,165 @@
-# Getting Started with Create React App
+# Mockup retail app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This repository contains the solution for the challenge of implementing a web application using React and TypeScript with the Vite build tool. The application includes an item list page, an item detail page, navbar with search functionality, and category tabs for filtering items. All the pages are responsive and work for both phone and web screen size
 
-In the project directory, you can run:
+<div style="display: flex; align-items: center;">
+  <img width="600" alt="" src="./image/web-item-list.png">
+  <img width="150" alt="" src="./image/phone-item-list.png">
+</div>
 
-### `npm start`
+<div style="display: flex; align-items: center;">
+  <img width="600" alt="" src="./image/web-item-detail.png">
+  <img width="150" alt="" src="./image/phone-item-detail.png">
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
+- React
+- TypeScript
+- Vite
+- HTML/CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Setup 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+``` shell
+$ git clone git@github.com:m-rec/merpay-frontend-template_J264562980.git
+$ cd merpay-frontend-template_J264562980/app
+$ npm install # or yarn install
+$ npm run dev # or yarn dev
+$ open http://localhost:5173
+```
 
-### `npm run build`
+## Launch API Server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+``` shell
+$ cd api-server
+$ npm start
+$ open http://localhost:8000
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Architecture and Strategy
+The application follows a component-based architecture and utilizes React and TypeScript with a Vite setup. The main components of the project are:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+``` shell
+- src/
+  - components/  # folder contains corresponding css and test files
+    - cards   
+      - Cards.tsx
+      - ItemCard.tsx
+    - navbar 
+      - Navbar.tsx
+      - ItemNavbar.tsx
+    - search 
+      - Search.tsx
+    - tabs 
+      - Tabs.tsx
+    - Icons.tsx  # importing icons from font awesome 
+  - data/        
+    - api  # Contains methods to fetch the API by different GET responses
+  - pages/      
+    - Home.tsx
+    - Category.tsx
+    - Item.tsx
+    - SearchResults.tsx
+  - App.tsx      
+  - main.tsx      
+- index.html    
+- package.json    
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### components folder
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- For each components, there are CSS file and test file.
+- Cards.tsx: Cards for item lists page. Grid is used and it is responsive for all devices.
+- ItemCard.tsx: Item card for item detail page.
+- Navbar.tsx: Responsive navbar for item lists page. menu icon appears for phone width with a toggle function.
+- ItemNavbar.tsx: Navbar for item detail page.  The item's name appears in the middle and also be able to make search bar appear by clicking the magnifying glass icon.
+- Search.tsx: Search bar for Navbar. It has a dropdown function that shows the suggestions of the search by fetching the API.
+- Tabs.tsx: Menu tabs for filtering the items by category_id.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### data folder
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Data folder has a method to fetch the API call by items, item/:id, and categories.
 
-### Code Splitting
+### pages folder
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Home.tsx: Home page "/" Displays the list of items fetched from the API and provides search and filtering functionality.
+- Category.tsx: Item list page that is filtered by category "/category/:id"
+- Item.tsx: Item page "/item/:id". Represents an individual item detail, displaying relevant information.
+- SearchResult.tsx: Result page that shows the results of your search from the navbar.
 
-### Analyzing the Bundle Size
+### Other files
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- App.tsx: It sets up the routing using React Router, defining the routes for the item list page and item detail page.
+- main.tsx: Entry point for the React application. It renders the App component and mounts it to the HTML template
+- index.html: HTML template for the application
+- package.json: Project configuration and dependencies
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The strategy for implementing the application involved closely following the design specification. The provided API was integrated to fetch item data for display and to provide suggestions for the search functionality. React and TypeScript were used to improve the maintainability of the codebase and ensure type safety. The application was designed to be responsive, allowing for optimal viewing on different devices.
 
-### Advanced Configuration
+## Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The project includes unit tests to ensure the correctness of the implemented functionalities. The tests are written using a testing framework such as Jest and can be executed with the following command:
 
-### Deployment
+``` shell
+npm run test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The tests aim to verify the following:
 
-### `npm run build` fails to minify
+- The rendering and functionality of the Item List page, Item Detail page, and other components.
+- The proper filtering of items based on the search form and category tabs.
+- The navigation between pages and the ability to directly access the Item Detail page via URL.
+- The integration with the provided API and the correct handling of API responses.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Code Linting
+
+The project follows code linting rules to ensure consistent code style and maintainability. The linting rules are enforced using a tool such as ESLint, which checks for potential errors and enforces code conventions.
+
+To run the code linting checks, use the following command:
+
+``` shell
+npm run lint
+```
+
+## Production Build
+To build the application for production deployment, use the following command:
+
+``` shell
+npm run build
+```
+
+## Conclusion
+
+To meet the requirements, the following implementation strategy is adopted:
+
+1. **Set up the project**: Initialize a new React TypeScript project with Vite setup.
+
+2. **Create component structure**: Define the component structure using React components with TypeScript typings.
+
+3. **Fetch and display item data**: Implement logic to fetch item data from the provided API and display them in components.
+
+4. **Implement search functionality**: Enhance the item lists component with a search form to filter items based on user input.
+
+5. **Implement category filtering**: Add category tabs to the item lists component and filter items based on the selected category.
+
+6. **Implement item detail page**: Create the ItemCard component to display detailed information about a selected item.
+
+7. **Enable direct URL navigation**: Implement routing to support direct navigation to every page via URL.
+
+8. **Testing and Linting**: Write tests to verify the functionality of critical components and use a linter for code quality.
+
+9. **Building for production**: Prepare a production build command using the Vite build system for deployment.
+
+By following this implementation strategy, the project fulfills the requirements using React with TypeScript and Vite setup, ensuring a production-ready application.
+
+
+
