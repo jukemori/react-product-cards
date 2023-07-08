@@ -1,8 +1,8 @@
-# Mockup retail app
+# Dynamic Products Page
 
 ## Overview
 
-This repository contains the solution for the challenge of implementing a web application using React and TypeScript with the Vite build tool. The application includes an item list page, an item detail page, navbar with search functionality, and category tabs for filtering items. All the pages are responsive and work for both phone and web screen size
+This repository contains a solution for the Dynamic Product Page challenge. The goal of the challenge is to create a dynamic product page that lists various products and allows users to vote for their favorite products.
 
 <div style="display: flex; align-items: center;">
   <img width="600" alt="" src="./image/web-item-list.png">
@@ -14,152 +14,66 @@ This repository contains the solution for the challenge of implementing a web ap
   <img width="150" alt="" src="./image/phone-item-detail.png">
 </div>
 
-## Technologies Used
-- React
-- TypeScript
-- Vite
-- HTML/CSS
-
 
 ## Setup 
 
 ``` shell
-$ git clone git@github.com:m-rec/merpay-frontend-template_J264562980.git
-$ cd merpay-frontend-template_J264562980/app
-$ npm install # or yarn install
-$ npm run dev # or yarn dev
-$ open http://localhost:5173
+$ cd jun.ukemori
+$ npm install
+
 ```
 
-## Launch API Server
+## Usage
+To build the project and start the development server:
 
 ``` shell
-$ cd api-server
+$ npm run build
 $ npm start
-$ open http://localhost:8000
 ```
+The application will be accessible at http://localhost:3000.
 
 
+## Design Decisions
+# User Interface
 
-## Architecture and Strategy
-The application follows a component-based architecture and utilizes React and TypeScript with a Vite setup. The main components of the project are:
+The user interface was designed to closely resemble the provided example. The product page layout consists of a list of products displayed in a vertical arrangement. Each product entry includes a title, description, votes count, submitter avatar, and product image.
 
+The title of each product is a clickable link that redirects to the specified URL. Clicking the vote button increments the vote count for the corresponding product. If the voted product surpasses the product above it in terms of votes, it moves up in the product list to maintain the order.
+
+## Technology Choices
+- React: I chose React as the UI framework because of its component-based architecture and ease of use. React provides a straightforward way to manage the state of the application and efficiently render the UI based on data changes.
+
+- CSS: For styling, I used CSS without any specific CSS library. Although the requirement doesn't focus on the visual appearance of the page, I ensured that the layout and styling were visually clear and organized.
+
+- Webpack: Webpack is used as the bundler for the project. It is responsible for bundling JavaScript and other assets, such as images, into a format that can be used by the browser.
+
+## Folder Structure
+The project follows a typical React folder structure:
 ``` shell
 - src/
   - components/  # folder contains corresponding css and test files
     - cards   
-      - Cards.tsx
-      - ItemCard.tsx
-    - navbar 
-      - Navbar.tsx
-      - ItemNavbar.tsx
-    - search 
-      - Search.tsx
-    - tabs 
-      - Tabs.tsx
-    - Icons.tsx  # importing icons from font awesome 
   - data/        
-    - api  # Contains methods to fetch the API by different GET responses
-  - pages/      
-    - Home.tsx
-    - Category.tsx
-    - Item.tsx
-    - SearchResults.tsx
-  - App.tsx      
-  - main.tsx      
+    - seed.js  # Contains utility functions provided to generate vote counts and return a list of products to render.
+  - App.js  # The main component that represents the product page.
+  - main.js  # The entry point of the application.    
 - index.html    
 - package.json    
 
 ```
 
-### components folder
-
-- For each components, there are CSS file and test file.
-- Cards.tsx: Cards for item lists page. Grid is used and it is responsive for all devices.
-- ItemCard.tsx: Item card for item detail page.
-- Navbar.tsx: Responsive navbar for item lists page. menu icon appears for phone width with a toggle function.
-- ItemNavbar.tsx: Navbar for item detail page.  The item's name appears in the middle and also be able to make search bar appear by clicking the magnifying glass icon.
-- Search.tsx: Search bar for Navbar. It has a dropdown function that shows the suggestions of the search by fetching the API.
-- Tabs.tsx: Menu tabs for filtering the items by category_id.
-
-
-### data folder
-
-- Data folder has a method to fetch the API call by items, item/:id, and categories.
-
-### pages folder
-
-- Home.tsx: Home page "/" Displays the list of items fetched from the API and provides search and filtering functionality.
-- Category.tsx: Item list page that is filtered by category "/category/:id"
-- Item.tsx: Item page "/item/:id". Represents an individual item detail, displaying relevant information.
-- SearchResult.tsx: Result page that shows the results of your search from the navbar.
-
-### Other files
-
-- App.tsx: It sets up the routing using React Router, defining the routes for the item list page and item detail page.
-- main.tsx: Entry point for the React application. It renders the App component and mounts it to the HTML template
-- index.html: HTML template for the application
-- package.json: Project configuration and dependencies
-
-
-The strategy for implementing the application involved closely following the design specification. The provided API was integrated to fetch item data for display and to provide suggestions for the search functionality. React and TypeScript were used to improve the maintainability of the codebase and ensure type safety. The application was designed to be responsive, allowing for optimal viewing on different devices.
-
 ## Testing
 
-The project includes unit tests to ensure the correctness of the implemented functionalities. The tests are written using a testing framework such as Jest and can be executed with the following command:
+Unit testing is an essential part of the development process. Although this exercise doesn't require 100% code coverage, I have included a basic set of unit tests to demonstrate my ability to write tests.
+
+To run the tests, use the following command:
 
 ``` shell
 npm run test
 ```
 
-The tests aim to verify the following:
+## Time Spent
 
-- The rendering and functionality of the Item List page, Item Detail page, and other components.
-- The proper filtering of items based on the search form and category tabs.
-- The navigation between pages and the ability to directly access the Item Detail page via URL.
-- The integration with the provided API and the correct handling of API responses.
-
-
-## Code Linting
-
-The project follows code linting rules to ensure consistent code style and maintainability. The linting rules are enforced using a tool such as ESLint, which checks for potential errors and enforces code conventions.
-
-To run the code linting checks, use the following command:
-
-``` shell
-npm run lint
-```
-
-## Production Build
-To build the application for production deployment, use the following command:
-
-``` shell
-npm run build
-```
-
-## Conclusion
-
-To meet the requirements, the following implementation strategy is adopted:
-
-1. **Set up the project**: Initialize a new React TypeScript project with Vite setup.
-
-2. **Create component structure**: Define the component structure using React components with TypeScript typings.
-
-3. **Fetch and display item data**: Implement logic to fetch item data from the provided API and display them in components.
-
-4. **Implement search functionality**: Enhance the item lists component with a search form to filter items based on user input.
-
-5. **Implement category filtering**: Add category tabs to the item lists component and filter items based on the selected category.
-
-6. **Implement item detail page**: Create the ItemCard component to display detailed information about a selected item.
-
-7. **Enable direct URL navigation**: Implement routing to support direct navigation to every page via URL.
-
-8. **Testing and Linting**: Write tests to verify the functionality of critical components and use a linter for code quality.
-
-9. **Building for production**: Prepare a production build command using the Vite build system for deployment.
-
-By following this implementation strategy, the project fulfills the requirements using React with TypeScript and Vite setup, ensuring a production-ready application.
-
+I spent approximately 6 hours completing this exercise.
 
 
