@@ -1,6 +1,5 @@
 .product-card {
   display: flex;
-  padding: 0.7rem;
   margin: 0.7rem;
   align-items: center;
 }
@@ -58,12 +57,13 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 390px) {
   .product-card {
     flex-direction: column;
   }
 
   .product-img {
     width: 100%;
+    padding-bottom: 0;
   }
 }

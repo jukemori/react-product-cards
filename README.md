@@ -5,17 +5,13 @@
 This repository contains a solution for the Dynamic Product Page challenge. The goal of the challenge is to create a dynamic product page that lists various products and allows users to vote for their favorite products.
 
 <div style="display: flex; align-items: center;">
-  <img width="600" alt="" src="./image/web-item-list.png">
-  <img width="150" alt="" src="./image/phone-item-list.png">
-</div>
-
-<div style="display: flex; align-items: center;">
-  <img width="600" alt="" src="./image/web-item-detail.png">
-  <img width="150" alt="" src="./image/phone-item-detail.png">
+  <img width="600" alt="" src="./public/images/readme/web-size.png">
+  <img width="150" alt="" src="./public/images/readme/phone-size.png">
 </div>
 
 
-## Setup 
+
+## Setup
 
 ``` shell
 $ cd jun.ukemori
@@ -52,13 +48,13 @@ The project follows a typical React folder structure:
 ``` shell
 - src/
   - components/  # folder contains corresponding css and test files
-    - cards   
-  - data/        
+    - cards
+  - data/
     - seed.js  # Contains utility functions provided to generate vote counts and return a list of products to render.
   - App.js  # The main component that represents the product page.
-  - main.js  # The entry point of the application.    
-- index.html    
-- package.json    
+  - main.js  # The entry point of the application.
+- index.html
+- package.json
 
 ```
 
@@ -75,5 +71,3 @@ npm run test
 ## Time Spent
 
 I spent approximately 6 hours completing this exercise.
-
-
