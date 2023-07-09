@@ -1,8 +1,8 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import App from "./App";
+import ProductList from "./ProductList";
 
-describe("App", () => {
+describe("ProductList", () => {
   const seedProducts = [
     // Seed data for testing
     {
@@ -40,9 +40,9 @@ describe("App", () => {
   });
 
   it("renders product cards correctly", () => {
-    render(<App />);
+    render(<ProductList />);
 
-    // Get elements from the rendered App component
+    // Get elements from the rendered ProductList component
     const productImages = screen.getAllByAltText("Product");
     const voteButtons = screen.getAllByTestId("vote-button");
     const voteAmounts = screen.getAllByTestId("vote-amount");
@@ -74,7 +74,7 @@ describe("App", () => {
   });
 
   it("increments votes when vote button is clicked", () => {
-    render(<App />);
+    render(<ProductList />);
 
     // Get vote buttons and vote amounts
     const voteButtons = screen.getAllByTestId("vote-button");
@@ -97,7 +97,7 @@ describe("App", () => {
       },
     }));
 
-    render(<App />);
+    render(<ProductList />);
 
     // Get the "No products found" message
     const noProductsMessage = screen.getByText("No products found");
