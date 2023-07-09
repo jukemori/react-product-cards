@@ -14,14 +14,6 @@ This repository contains a solution for the Dynamic Product Page challenge. The 
 ``` shell
 $ cd jun.ukemori
 $ npm install
-
-```
-
-## Usage
-To build the project and start the development server:
-
-``` shell
-$ npm run build
 $ npm start
 ```
 The application will be accessible at http://localhost:3000.
@@ -67,6 +59,10 @@ The title of each product is a clickable link that redirects to the specified UR
 The app includes the following key components:
 
 
+### ProductCard
+The Product component represents an individual product.  It retrieves the product data from the seed.js file and passes it to the Product component for rendering each individual product. It receives the product data as props and displays the product title, description, votes, submitter avatar, and product image. The product title is rendered as a link.
+
+When the vote button is clicked, the Product component triggers a callback function provided by the ProductList component to update the vote count for that product.
 
 ### ProductList
 It retrieves the product data from the ProductCard file and renders each individual product. 
@@ -74,14 +70,14 @@ The ProductList component is responsible for rendering the list of products.
 
 The product list is sorted based on the vote count, with the products having the highest vote count appearing at the top. When a user clicks the vote button, the ProductList component updates the vote count for that product and triggers a re-render to reflect the updated order if necessary.
 
-### ProductCard
-The Product component represents an individual product.  It retrieves the product data from the seed.js file and passes it to the Product component for rendering each individual product. It receives the product data as props and displays the product title, description, votes, submitter avatar, and product image. The product title is rendered as a link.
-
-When the vote button is clicked, the Product component triggers a callback function provided by the ProductList component to update the vote count for that product.
 
 ## Testing
 
-Unit testing is an essential part of the development process. Although this exercise doesn't require 100% code coverage, I have included a basic set of unit tests to demonstrate my ability to write tests.
+### ProductCard
+The tests ensure that the ProductCard component renders product details correctly and calls the handleVote function when the vote button is clicked.
+
+### ProductList
+The tests verify that the ProductList component renders product cards correctly, increments votes when the vote button is clicked, and displays a "No products found" message when there are no products.
 
 To run the tests, use the following command:
 
