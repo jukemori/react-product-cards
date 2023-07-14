@@ -1,6 +1,6 @@
 # Dynamic Products Page
 
-This repository contains a solution for the Dynamic Product Page challenge. The goal of the challenge is to create a dynamic product page that lists various products and allows users to vote for their favorite products.
+A dynamic product page that lists various products and allows users to vote for their favorite products.
 
 <div style="display: flex; align-items: center;">
   <img width="600" alt="" src="./public/images/readme/web-size.png">
