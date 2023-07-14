@@ -85,6 +85,3 @@ To run the tests, use the following command:
 npm run test
 ```
 
-## Time Spent
-
-I spent approximately 6 hours completing this exercise.
