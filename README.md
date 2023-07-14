@@ -12,7 +12,7 @@ This repository contains a solution for the Dynamic Product Page challenge. The 
 ## Setup
 
 ``` shell
-$ cd jun.ukemori
+$ cd react-product-cards
 $ npm install
 $ npm start
 ```
